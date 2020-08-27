@@ -7,20 +7,29 @@ Dark green: #28b485
 
 */
 
-* {
+*, 
+*:after,
+*:before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit
+}
+
+html {
+    font-size: 62.5%;
 }
 
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+
+    box-sizing: border-box;
 }
+
 
 .header {
     height: 95vh;
@@ -31,38 +40,148 @@ body {
     position: relative;
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-40%, -50%);
+    text-align: center;
 }
 
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+    margin-bottom: 6rem;
+    backface-visibility: hidden;
+    
 }
 
-.heading-primary-main {
+.heading-primary--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
+
+    animation: moveInLeft 1s ease-out  /*First and more complex way of making animations, with keyframe */
 }
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
     white-space: nowrap;
+
+    animation: moveInRight 1s ease-out
 }
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInBotton {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 40px;
+    display: inline-block;
+    border-radius: 10rem; /* Second way of making animations, with transition, easier and less complex */
+    transition: all .2s; /* Transition property must be in the original state always */
+    position: relative;
+    font-size: 1.6rem;
+}
+
+.btn--white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn--white:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2); 
+}
+
+.btn--white:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2); /*This create an effect like the botton is gettin closer to the page when click it */
+}
+
+.btn:after { /*btn after is gonna be treated like a child element*/
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute; /*Is gonna be hidden behind the original botton so that one gonna have relative position, not the header*/
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s ;
+}
+
+
+.btn--white:after {
+    background-color: #fff;
+    
+}
+
+.btn:hover::after {
+     transform: scaleX(1.4) scaleY(1.6);
+     opacity: 0;
+}
+
+.btn--animated {
+    animation: moveInBottom .5 ease-out .75s;
+    animation-fill-mode: backwards;
+} 
