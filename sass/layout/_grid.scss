@@ -2,7 +2,7 @@
 
 .row {
     max-width: $grid-width;
-    background-color: #eee;
+   
     margin: 0 auto;
     
     &:not(:last-child) {
@@ -12,7 +12,7 @@
     @include clearfix; //this clearfix is used because when you apply float prop, something colapse so you need to use this to restore height
 
     [class^="col-"] {
-        background-color: orangered;
+      
         float: left;
     
         &:not(:last-child) {
