@@ -4,7 +4,7 @@ body {
     /* font-size: 16px; */
     line-height: 1.7;
     color: $color-grey-dark;
-    padding: 3rem;
+   
 }
 
 
@@ -13,14 +13,19 @@ body {
     text-transform: uppercase;
     margin-bottom: 6rem;
     backface-visibility: hidden;
-    
+
     &--main {
         display: block;
         font-size: 6rem;
         font-weight: 400;
         letter-spacing: 3.5rem;
     
-        animation: moveInLeft 1s ease-out  /*First and more complex way of making animations, with keyframe */
+        animation: moveInLeft 1s ease-out;  /*First and more complex way of making animations, with keyframe */
+
+         @include respond(phone) {
+        letter-spacing: 1rem;
+        font-family: 5rem;
+        }
     }
     &--sub {
         display: block;
@@ -29,7 +34,12 @@ body {
         letter-spacing: 1.75rem;
         white-space: nowrap;
     
-        animation: moveInRight 1s ease-out
+        animation: moveInRight 1s ease-out;
+
+         @include respond(phone) {
+        letter-spacing: .5rem;
+       
+        }
     }
 }
 
@@ -45,6 +55,13 @@ body {
     letter-spacing: .2rem;
     transition: all .2s;
 
+    @include respond(tab-port) {
+        font-size:  3rem;
+    }
+
+     @include respond(phone) {
+        font-size:  2.5rem;
+    }
 
     &:hover {
         transform: skewY(2deg) skewX(15deg) scale(1.1);
