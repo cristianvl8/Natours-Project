@@ -7,6 +7,16 @@
     
     &:not(:last-child) {
         margin-bottom: $gutter-vertical; // so this margin is applied to all rows except the last-child
+
+         @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small;
+    }
+
+}
+
+   @include respond(tab-port) {
+            max-width: 50rem;
+            padding: 0 3rem;
     }
 
     @include clearfix; //this clearfix is used because when you apply float prop, something colapse so you need to use this to restore height
@@ -17,6 +27,15 @@
     
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port) {
+            margin-right: 0;
+            margin-bottom: $gutter-vertical-small;
+        }
+        }
+
+        @include respond(tab-port) {
+            width: 100% !important;
         }
 
     }
