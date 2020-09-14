@@ -34,7 +34,8 @@
         outline: none;
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black,.2); /*This create an effect like the botton is gettin closer to the page when click it */
-    }
+    } 
+    
     
     &:after { /*btn after is gonna be treated like a child element*/
         content: "";
